@@ -64,34 +64,33 @@ export default function TextForm(props) {
 
 
     // word counter
-    let wordCounter = text.split(" ").filter(word => word.trim().length > 0).length;
+    let wordCounter = text.split(/\s+/).filter(word => word.trim().length > 0).length;
 
     // character counter
     let charCounter = text.replace(/\s+/g, '').length;
 
 
-
     return (
         <>
-            <div className="container" >
+            <div className="container" style={{marginTop: '2%'}} >
                 <h1 style={{color: props.mode === 'dark'? 'white' : 'black'}}>{props.head}</h1>
                 <div className="mb-3">
                     <textarea className="form-control" value={text}  onChange={handleOnChange} style={{backgroundColor: props.mode === 'dark'? '#0A2647': 'white', color:props.mode === 'dark' ? 'white' : 'black'} } id="my-box" rows="8"></textarea>
                 </div>
                 <div className="d-grid gap-2 d-md-flex justify-content-between">
                     <div className="align-content-start">
-                        <button className="btn btn-success" onClick={handleUpClick}>Upper case</button>
-                        <button className="btn btn-success mx-2" onClick={handleLowClick}>Lower case</button>
-                        <button className="btn btn-success mx-2" onClick={clearText}>Clear text</button>
+                        <button disabled={text.length === 0}className="btn btn-success" onClick={handleUpClick}>Upper case</button>
+                        <button disabled={text.length === 0}className="btn btn-success mx-2 my-1" onClick={handleLowClick}>Lower case</button>
+                        <button disabled={text.length === 0}className="btn btn-success mx-2 my-1" onClick={clearText}>Clear text</button>
                         <label htmlFor="word-trimmer" style={{color: props.mode === 'dark' ? 'white' : 'black'}}>Trim to:</label>
                         <input type="text" className='ms-2' value={wordsToKeep} onChange={(e) => SetWordsToKeep(e.target.value)} id="word-trimmer" />
-                        <button className="btn btn-success mx-2" onClick={handleTrimClick} >Trim</button>
-                        <button className="btn btn-success my-2" onClick={removeSpace}>Remove spaces</button>
+                        <button disabled={text.length === 0}className="btn btn-success mx-2 my-1" onClick={handleTrimClick} >Trim</button>
+                        <button disabled={text.length === 0}className="btn btn-success my-2 my-1" onClick={removeSpace}>Remove spaces</button>
                     </div>
                     <div className="align-content-end">
-                        <button type="submit" onClick={speak} className="btn btn-success my-2 me-2">Speak</button>
-                        <button type="submit" onClick={pause} className="btn btn-success my-2 me-2">Pause</button>
-                        <button type="submit" onClick={resume} className="btn btn-success my-2 me-2">Resume</button>
+                        <button disabled={text.length === 0}type="submit" onClick={speak} className="btn btn-success my-2 me-2">Speak</button>
+                        <button disabled={text.length === 0}type="submit" onClick={pause} className="btn btn-success my-2 me-2">Pause</button>
+                        <button disabled={text.length === 0}type="submit" onClick={resume} className="btn btn-success my-2 me-2">Resume</button>
                     </div>
                 </div>
             </div>

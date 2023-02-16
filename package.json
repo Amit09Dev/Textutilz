@@ -1,6 +1,6 @@
 {
-    "homepage": "https://freakamy.github.io/Textutilz",
     "name": "textutilz",
+    "homepage": "https://freakamy.github.io/Textutilz",
     "version": "0.1.0",
     "private": true,
     "dependencies": {

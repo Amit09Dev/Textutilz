@@ -1,21 +1,22 @@
 import './App.css';
 import Navbar from './components/Navbar'
-// import About from './components/About'
+import About from './components/about'
 import TextForm from './components/TextForm'
 import Alert from './components/Alert';
 import React, { useState } from 'react'
-// import {
-//   BrowserRouter,
-//   Routes,
-//   Route,
-// } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
 
 
 function App() {
   const [mode, setMode] = useState('light');
   const [btnText, setBtnText] = useState('dark');
   const [alert, setAlert] = useState('null');
-
+    
   // A function to set alert type
   const setAlertType = (message, type) => {
     setAlert({
@@ -45,19 +46,19 @@ function App() {
     }
   }
 
+ 
 
 
   return (
     <>
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
         <Navbar title="TextUtilz" about="About Us" mode={mode} toggleMode={toggleMode} btnText={btnText} />
         <Alert alert={alert} />
-        {/* <Routes> */}
-          {/* <Route path="/about" element={<About/>} mode={mode} />
-          < Route path="/" element={<TextForm head="Enter your text to analyze" mode={mode} setAlertType={setAlertType} />} /> */}
-          <TextForm head="Enter your text to analyze" mode={mode} setAlertType={setAlertType} />
-        {/* </Routes> */}
-      {/* // </BrowserRouter> */}
+        <Routes>
+          < Route path="/*" element={<TextForm head="Enter your text to analyze" mode={mode} setAlertType={setAlertType} />} />
+        <Route path="/about" element={<About mode={mode} />} />
+        </Routes>
+       </BrowserRouter>
       <div className="container">
         <div className="container my-5">
         </div>
